@@ -13,12 +13,12 @@
 
   </head>
   <body class="page">
-    <header class="header header__sizes">
+    <header class="header header-sizes">
       <h1 class="title">&lt;/HTML&gt;</h1>
       <p class="title__text">Закрывающий тег</p>
     </header>
     <main class="content">
-      <article class="card">
+      <article class="card card-sizes">
           <h2 class="card__title">Фритрек и нулевой спринт: Подготовка к работе</h2>
           <div class="card__block-label">
             <span class="card__label">&lt;/HTML&gt;</span>
@@ -62,7 +62,7 @@
             </div>
           </div>
       </article>
-      <article class="card">
+      <article class="card card-sizes">
         <h2 class="card__title">1 спринт: Я — чистый лист</h2>
         <div class="card__block-label">
           <span class="card__label">&lt;/HTML&gt;</span>
@@ -108,7 +108,7 @@
           </div>
         </div>
       </article>
-      <article class="card">
+      <article class="card card-sizes">
         <h2 class="card__title">1 спринт: А если не получится?</h2>
         <div class="card__block-label">
           <span class="card__label">&lt;css&gt;</span>
@@ -152,7 +152,7 @@
             </div>
           </div>
       </article>
-      <article class="card">
+      <article class="card card-sizes">
         <h2 class="card__title">2 спринт: Погоня за идеалом</h2>
         <div class="card__block-label">
           <span class="card__label">&lt;desigions&gt;</span>
@@ -197,7 +197,7 @@
             </div>
           </div>
       </article>
-      <article class="card">
+      <article class="card card-sizes">
         <h2 class="card__title">2 спринт: О тех, кто рядом</h2>
         <div class="card__block-label">
           <span class="card__label">care</span>
@@ -243,7 +243,7 @@
             </div>
           </div>
       </article>
-      <article class="card">
+      <article class="card card-sizes">
         <h2 class="card__title">3 спринт: Обходные стратегии</h2>
         <div class="card__block-label">
           <span class="card__label">&lt;support&gt;</span>
@@ -286,7 +286,7 @@
             </div>
           </div>
       </article>
-      <article class="card">
+      <article class="card card-sizes">
         <h2 class="card__title">3 спринт: Когда опускаются руки</h2>
         <div class="card__block-label">
           <span class="card__label">&lt;lifes-style: none;&gt;</span>
@@ -331,7 +331,7 @@
             </div>
           </div>
       </article>
-      <article class="card">
+      <article class="card card-sizes">
         <h2 class="card__title">«Сейчас я здесь»</h2>
         <div class="card__block-label">
           <span class="card__label">&lt;experience&gt;</span>
@@ -379,10 +379,21 @@
             </div>
           </div>
       </article>
-      <button>
-        <img>
-        <span class="">Сохранить на память</span>
+      <button onclick="window['dialog-save'].showModal();" aria-controls="dialog-save" class="save-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewbox="0 0 21 21">
+          <use href="./svg/floppy.svg#floppy"></use>
+        </svg>
+        <span class="button__text">Сохранить на память</span>
       </button>
+      <dialog id="dialog-save" class="dialog-save">
+        <div class="dialog-block">
+          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewbox="0 0 21 21">
+            <use href="./svg/floppy.svg#floppy"></use>
+          </svg>
+          <h3 class="dialog-text">Вставьте дискету, чтобы продолжить</h3>
+        </div>
+        <button type="submit">OK</button>
+      </dialog>
     </main>
     <script src="./scripts/like.js"></script>
   </body>

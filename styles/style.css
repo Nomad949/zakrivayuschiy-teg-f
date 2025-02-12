@@ -14,6 +14,7 @@
   min-inline-size: 320px;
   min-block-size: 100dvb;
   display: grid;
+  justify-content: center;
   font-family: var(--main-font), monospace;
   font-size: var(--main-font-size);
   font-variation-settings: 'wght' var(--weight-regular);
@@ -34,10 +35,9 @@
   background-color: #fff;
 }
 
-.header__sizes {
+.header-sizes {
   inline-size: var(--header-inline-size);
   block-size: var(--header-block-size);
-  margin-inline: var(--header-margin-inline);
   margin-block: var(--header-margin-block);
 }
  
@@ -58,13 +58,16 @@
 .content {
   display: grid;
   gap: 52px;
-  justify-self: center;
-  max-inline-size: 698px;
+  padding-bottom: 100px;
 }
 
 .card {
   border: 2px solid var(--main-color);
-  background-color: #fff;
+  background-color: var(--card-color);
+}
+
+.card-sizes {
+  inline-size: clamp(23.438rem, 16.329rem + 30.329vw, 43.625rem);
 }
 
 .card__title {
@@ -84,16 +87,19 @@
   font-size: 14px;
   top: 25px;
   right: 25px;
-  text-shadow: 1px 0 white, -1px 0 white, 0 1px white, 0 -1px white;
+  text-shadow: 1px 0 var(--text-stroke-color), 
+              -1px 0 var(--text-stroke-color), 
+              0 1px var(--text-stroke-color), 
+              0 -1px var(--text-stroke-color);
   mix-blend-mode: hard-light;
 }
 
 /* проверка поддержки text-stroke */
 
-@supports ((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
+@supports ((text-stroke: 1px var(--text-stroke-color)) or (-webkit-text-stroke: 1px var(--text-stroke-color))) {
   .card__label {
-    -webkit-text-stroke: 1px #fff;
-    text-stroke: 1px #fff;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    text-stroke: 1px var(--text-stroke-color);
     text-shadow: none;
   }
 }
@@ -129,9 +135,43 @@
   inline-size: 130px;
   block-size: 38px;
   background-color: transparent;
+  border: 2px solid var(--main-color);
 }
 
 .button__text {
   font-family: var(--accent-font);
   font-size: 14px;
+}
+
+.save-button {
+  display: flex;
+  place-items: center center;
+  justify-self: center;
+  inline-size: 335px;
+  padding: 15px 20px;
+  background-color: var(--card-color);
+  border: 2px solid var(--main-color);
+}
+
+
+/* modal */
+
+.dialog-save[open] {
+  display: grid;
+  gap: 30px;
+  padding: 30px;
+}
+
+.dialog-save[open]::backdrop {
+  background-color: var(--dialog-backdrop-color);
+}
+
+.dialog-block {
+  display: flex;
+}
+
+.dialog-text {
+  font-family: var(--accent-font);
+  font-size: 14px;
+  text-transform: uppercase;
 }
