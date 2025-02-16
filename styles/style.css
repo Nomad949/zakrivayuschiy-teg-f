@@ -31,7 +31,7 @@
   display: grid;
   place-items: end center;
   font-family: var(--accent-font), monospace;
-  border: 2px solid var(--main-color);
+  border: 2px solid var(--accent-color);
   background-color: #fff;
 }
 
@@ -62,18 +62,18 @@
 }
 
 .card {
-  border: 2px solid var(--main-color);
-  background-color: var(--card-color);
+  border: 2px solid var(--accent-color);
+  background-color: var(--main-color);
 }
 
 .card-sizes {
-  inline-size: clamp(23.438rem, 16.329rem + 30.329vw, 43.625rem);
+  inline-size: var(--card-inline-size);
 }
 
 .card__title {
   display: block;
   padding: 5px 10px;
-  font-size: 18px;
+  font-size: var(--main-font-size);
   font-variation-settings: 'wght' var(--weight-bold);
 }
 
@@ -83,8 +83,9 @@
 
 .card__label {
   position: absolute;
-  font-family: 'PressStart2P';
-  font-size: 14px;
+  font-family: 'PressStart2P', monospace;
+  font-size: var(--accent-font-size);
+  z-index: 1;
   top: 25px;
   right: 25px;
   text-shadow: 1px 0 var(--text-stroke-color), 
@@ -96,7 +97,8 @@
 
 /* проверка поддержки text-stroke */
 
-@supports ((text-stroke: 1px var(--text-stroke-color)) or (-webkit-text-stroke: 1px var(--text-stroke-color))) {
+@supports ((text-stroke: 1px var(--text-stroke-color)) or 
+          (-webkit-text-stroke: 1px var(--text-stroke-color))) {
   .card__label {
     -webkit-text-stroke: 1px var(--text-stroke-color);
     text-stroke: 1px var(--text-stroke-color);
@@ -105,14 +107,14 @@
 }
 
 .card__image {
-  max-block-size: 696px;
-  max-inline-size: 696px;
-  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 }
 
 .card__content {
   display: grid;
-  gap: 25px;
+  gap: 26px;
   padding: 25px;
 }
 
@@ -127,8 +129,33 @@
 }
 
 .button {
-  background-color: var(--card-color);
-  border: 2px solid var(--main-color);
+  font-family: var(--accent-font), monospace;
+  font-size: var(--accent-font-size);
+  background-color: var(--main-color);
+  border: 2px solid var(--accent-color);
+  padding-block: 10px;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--accent-color);
+  transition: box-shadow 0.3s ease;
+}
+
+.button::before {
+  content: '';
+  height: 15px;
+  transform: translateX(-100%);
+  transition:  transform 0.5 ease-in-out;
+  z-index: 2;
+}
+
+.button:hover::before {
+  transform: translateX(100%);
+}
+
+.button:hover {
+  cursor: pointer;
 }
 
 .card__icon-button {
@@ -138,12 +165,11 @@
 
 .card__like-button {
   inline-size: 130px;
-  block-size: 38px;
 }
 
 .button__text {
-  font-family: var(--accent-font);
-  font-size: 14px;
+  font-family: var(--accent-font), monospace;
+  font-size: var(--accent-font-size);
 }
 
 .save-button {
@@ -151,10 +177,13 @@
   gap: 8px;
   place-items: center center;
   justify-self: center;
-  min-inline-size: 335px;
   padding: 15px 20px;
 }
 
+.floppy-image {
+  width: 21px;
+  height: 21px;
+}
 
 /* modal */
 
@@ -162,8 +191,8 @@
   display: grid;
   gap: 30px;
   padding: 30px;
-  inline-size: 353px;
-  border: 2px solid var(--main-color);
+  max-inline-size: 353px; /* ATENTION !!! */
+  border: 2px solid var(--accent-color);
 }
 
 .dialog-save[open]::backdrop {
@@ -175,9 +204,67 @@
   gap: 20px;
 }
 
+.dialog-save .floppy-image {
+  width: 39px;
+  height: 39px;
+}
+
 .dialog-text {
-  font-family: var(--accent-font);
-  font-size: 14px;
+  font-family: var(--accent-font), monospace;
+  font-size: var(--accent-font-size);
   text-transform: uppercase;
   line-height: 21px;
+}
+
+/* cards filters */
+
+.filter-brightness {
+  filter: brightness(200%);
+}
+
+.filter-contrast {
+  filter: contrast(20%);
+}
+
+.filter-sepia {
+  filter: sepia(100%);
+}
+
+.filter-blur {
+  filter: blur(0.2rem);
+}
+
+.filter-grayscale {
+  filter: grayscale(80%);
+}
+
+.filter-saturate {
+  filter: saturate(180%);
+}
+
+.filter-multi {
+  filter: blur(0.1rem) sepia(60%) brightness(150%);
+}
+
+/* media-query*/
+
+@media (width <= 375px) {
+  .content {
+    gap: 50px;
+  }
+
+  .card__label {
+    right: 13px;
+  }
+
+  .save-button {
+    flex-direction: column;
+    margin-inline: 35px;
+    padding: 15px 17px;
+  }
+
+  .floppy-image {
+    width: 28px;
+    height: 28px;
+  }
 }
