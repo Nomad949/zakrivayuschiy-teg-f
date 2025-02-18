@@ -21,4 +21,6 @@
 --card-inline-size: clamp(23.438rem, 16.329rem + 30.329vw, 43.625rem);
 --text-stroke-color: #fff;
 --dialog-backdrop-color: rgb(0 0 0 / 0.75);
+--contour-color: #000;
+--sparks-color: #FF0000;
 }
