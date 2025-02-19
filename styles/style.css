@@ -93,6 +93,7 @@
               0 1px var(--text-stroke-color), 
               0 -1px var(--text-stroke-color);
   mix-blend-mode: hard-light;
+  opacity: 0.5;
 }
 
 /* проверка поддержки text-stroke */
