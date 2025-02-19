@@ -1,1 +1,1 @@
-https://nomad949.github.io/zakrivayuschiy-teg-f/
+https://github.com/Nomad949/zakrivayuschiy-teg-f.git
