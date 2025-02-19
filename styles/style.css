@@ -178,6 +178,7 @@
   border: transparent;
   background-color: transparent;
   transition: border 0.3s ease;
+  cursor: pointer;
 }
 
 .card__icon-button:focus {
@@ -220,7 +221,7 @@
   display: grid;
   gap: 30px;
   padding: 30px;
-  max-inline-size: 353px; /* ATENTION !!! */
+  max-inline-size: 353px;
   border: 2px solid var(--accent-color);
 }
 
@@ -230,6 +231,7 @@
 
 .dialog-block {
   display: flex;
+  place-items: center center;
   gap: 20px;
 }
 
@@ -250,7 +252,7 @@
 
 .main-body,
 .core {
-  fill: none;
+  fill: transparent;
 }
 
 .sparks {
@@ -264,22 +266,45 @@
 
 .card__icon-button:hover .core {
   fill: var(--contour-color);
-  transition: fill 10s ease-in-out;
+  transition: fill 0.3s;
 }
 
 .card__icon-button:hover .main-body {
   fill: var(--contour-color);
-  transition: fill 10s ease-in-out 0.05s;
+  transition: fill 0.3s 0.05s;
 }
 
-.like-icon:active .heart .core {
+.card__icon-button:active .core {
   fill: var(--sparks-color);
-  transition: fill 1.3s;
+  transition: fill 0.3s;
 }
 
-.like-icon:active .heart .main-body {
+.card__icon-button:active .main-body {
   fill: var(--sparks-color);
-  transition: fill 2.3s 0.5s;
+  transition: fill 0.3s 0.05s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--sparks-color);
+  transition: fill 0.3s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--sparks-color);
+  transition: fill 0.3s 0.1s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--sparks-color);
+  transition: fill 0.3s 0.2s;
+}
+
+.like-icon.is-liked {
+  animation: heart 0.3s ease-in 0.1s;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks 0.3s ease-in 0.3s;
 }
 
 
@@ -318,7 +343,7 @@
 
 @media (width <= 375px) {
   .content {
-    gap: 50px;
+    gap: 49px;
   }
 
   .card__label {
