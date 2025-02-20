@@ -18,11 +18,7 @@
   font-family: var(--main-font), sans-serif;
   font-size: var(--main-font-size);
   font-variation-settings: 'wght' var(--weight-regular);
-  background-image: var(--background-image);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+  background: var(--background-image) no-repeat center / cover fixed;
 }
 
 /* заголовок */
@@ -144,8 +140,15 @@
 
 .button:focus {
   outline: none;
+}
+
+.button:focus-visible {
   box-shadow: 2px 2px 0 var(--accent-color);
   transition: box-shadow 0.3s ease;
+}
+
+.button:hover {
+  cursor: pointer;
 }
 
 .button::before {
@@ -164,20 +167,6 @@
   transform: translateX(0);
 }
 
-.button:hover {
-  cursor: pointer;
-}
-
-.button:hover .button__text {
-  color: var(--main-color);
-  mix-blend-mode: difference;
-}
-
-.button:hover .floppy-image {
-  stroke: var(--main-color);
-  mix-blend-mode: difference;
-}
-
 .card__icon-button {
   display: flex;
   place-items: center center;
@@ -194,7 +183,8 @@
 }
 
 .card__icon-button:focus-visible {
-  border: 2px solid var(--accent-color);
+  outline: 2px solid var(--accent-color);
+  outline-offset: -2px;
 }
 
 .card__like-button {
@@ -203,9 +193,10 @@
 }
 
 .button__text {
-  font-family: var(--accent-font), fantasy;
-  font-size: var(--accent-font-size);
+  line-height: 12.6px;
   position: relative;
+  color: var(--main-color);
+  mix-blend-mode: difference;
   z-index: 1;
 } 
 
@@ -221,7 +212,10 @@
   width: 21px;
   height: 21px;
   position: relative;
+  mix-blend-mode: difference;
+  z-index: 1;
 }
+
 
 /* modal */
 
@@ -251,6 +245,7 @@
 .dialog-text {
   font-family: var(--accent-font), fantasy;
   font-size: var(--accent-font-size);
+  font-weight: var(--weight-regular);
   text-transform: uppercase;
   line-height: 21px;
 }
@@ -355,7 +350,7 @@
 
 @media (width <= 375px) {
   .content {
-    gap: 49px;
+    gap: 48px;
   }
 
   .card__label {
@@ -364,8 +359,13 @@
 
   .save-button {
     flex-direction: column;
-    margin-inline: 35px;
+    inline-size: 308px;
     padding: 15px 17px;
+  }
+
+  .dialog-save[open] {
+    max-inline-size: 341px;
+    padding-inline: 41px;
   }
 
   .floppy-image {
